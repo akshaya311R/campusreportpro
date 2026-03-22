@@ -1,0 +1,5 @@
+{
+  "name": "CampusReport",
+  "description": "A live campus reporting system for students and staff to track and resolve issues.",
+  "requestFramePermissions": []
+}

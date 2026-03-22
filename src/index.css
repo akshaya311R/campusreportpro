@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600;1,6..72,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@1,9..144,700;1,9..144,800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  --font-serif: 'Newsreader', Georgia, serif;
+  --font-display: 'Fraunces', Georgia, serif;
+
+  --color-primary: #004ac6;
+  --color-primary-mid: #1a5cd8;
+  --color-primary-container: #2563eb;
+  --color-primary-light: #3b82f6;
+  --color-primary-ghost: rgba(37,99,235,0.07);
+  --color-on-primary: #ffffff;
+  --color-secondary: #006591;
+  --color-tertiary: #632ecd;
+  --color-background: #f6f8ff;
+  --color-surface: #ffffff;
+  --color-surface-low: #f0f3ff;
+  --color-surface-container: #e7eeff;
+  --color-surface-high: #dee9ff;
+  --color-surface-highest: #d5e3fd;
+  --color-surface-lowest: #ffffff;
+  --color-on-surface: #0d1a2e;
+  --color-on-surface-var: #3f4257;
+  --color-outline: #6e7180;
+  --color-outline-var: #c3c6d7;
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+
+  --color-amber: #d97706;
+  --color-amber-bg: #fffbeb;
+  --color-amber-bdr: #fde68a;
+  --color-green: #059669;
+  --color-green-bg: #ecfdf5;
+  --color-green-bdr: #a7f3d0;
+  --color-sky: #0284c7;
+  --color-sky-bg: #f0f9ff;
+  --color-sky-bdr: #bae6fd;
+  --color-red: #dc2626;
+  --color-red-bg: #fef2f2;
+  --color-red-bdr: #fecaca;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-on-surface font-sans antialiased min-h-screen overflow-x-hidden;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/60 backdrop-blur-[22px] border border-white/85 shadow-[0_8px_32px_rgba(37,99,235,0.07),inset_0_1px_0_rgba(255,255,255,0.9)];
+  }
+  .glass-xl {
+    @apply rounded-[2rem] shadow-[0_40px_80px_rgba(37,99,235,0.12),inset_0_1px_0_rgba(255,255,255,0.9)];
+  }
+  .glass-lg {
+    @apply rounded-3xl;
+  }
+  .glass-md {
+    @apply rounded-2xl;
+  }
+  .glass-sm {
+    @apply rounded-xl;
+  }
+  .glass-pill {
+    @apply rounded-full;
+  }
+}
+
+/* Ambient Background Blobs */
+.bg-layer {
+  position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; contain: strict;
+}
+.blob { position: absolute; border-radius: 50%; will-change: transform; }
+.blob-1 {
+  width: 60%; height: 60%; top: -12%; left: -12%;
+  background: radial-gradient(circle, rgba(37,99,235,0.09) 0%, transparent 68%);
+  filter: blur(90px); animation: bf1 24s ease-in-out infinite;
+}
+.blob-2 {
+  width: 55%; height: 55%; bottom: -12%; right: -12%;
+  background: radial-gradient(circle, rgba(99,46,205,0.07) 0%, transparent 68%);
+  filter: blur(100px); animation: bf2 30s ease-in-out infinite;
+}
+.blob-3 {
+  width: 38%; height: 38%; top: 38%; left: 32%;
+  background: radial-gradient(circle, rgba(37,99,235,0.04) 0%, transparent 68%);
+  filter: blur(80px); animation: bf3 20s ease-in-out infinite;
+}
+.blob-4 {
+  width: 28%; height: 28%; top: 20%; right: 10%;
+  background: radial-gradient(circle, rgba(14,165,233,0.05) 0%, transparent 68%);
+  filter: blur(70px); animation: bf2 16s ease-in-out infinite reverse;
+}
+.dot-grid {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, #c2cce8 0.5px, transparent 0.5px);
+  background-size: 26px 26px; opacity: 0.28;
+}
+@keyframes bf1 { 0%,100%{transform:translate(0,0)} 33%{transform:translate(2%,3%)} 66%{transform:translate(-2%,1%)} }
+@keyframes bf2 { 0%,100%{transform:translate(0,0)} 33%{transform:translate(-3%,-2%)} 66%{transform:translate(2%,-1%)} }
+@keyframes bf3 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(2%,2%)} }
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 6px 20px rgba(37,99,235,0.35); }
+  50% { box-shadow: 0 8px 32px rgba(37,99,235,0.55); }
+}
